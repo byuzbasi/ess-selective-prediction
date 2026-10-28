@@ -1,0 +1,23 @@
+{
+  "files": [
+    {
+      "path": "data/ESS7e02_3.dta",
+      "bytes": 34385574,
+      "sha256": "5e3e3c26e48d939b148b9592d17db2373edd443a90301223c45cebc80060d86f",
+      "doi": "10.21338/ess7e02_3",
+      "edition": "2.3"
+    },
+    {
+      "path": "data/ESS11e04_2.dta",
+      "bytes": 56607407,
+      "sha256": "d3fb99094f28c5594057c3beebf580fca21386091212465eaaac1cc125af2705",
+      "doi": "10.21338/ess11e04_2",
+      "edition": "4.2"
+    }
+  ],
+  "license": "CC BY-NC-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "official_terms": "https://europeansocialsurvey.org/contact/disclaimer",
+  "data_portal": "https://ess.sikt.no/",
+  "modified": false
+}

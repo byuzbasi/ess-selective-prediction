@@ -1,0 +1,514 @@
+{
+  "version": "1.0.0",
+  "country_order": [
+    "AT",
+    "BE",
+    "CH",
+    "DE",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "HU",
+    "IE",
+    "IL",
+    "LT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "SE",
+    "SI"
+  ],
+  "seeds": {
+    "source_roles": 2026102601,
+    "local_reserve": 2026102602,
+    "score_ties": 2026102603,
+    "model": 2026102604
+  },
+  "features": [
+    {
+      "name": "agea",
+      "source": "agea",
+      "type": "continuous",
+      "proposal": "raw 25-89; DL source-fit-only country-equal weighted centering/scaling",
+      "weighted_scale_definition": "sqrt(weighted population second central moment), no Bessel correction; source-fit weights only"
+    },
+    {
+      "name": "gndr",
+      "source": "gndr",
+      "type": "categorical",
+      "valid_codes": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "education_group",
+      "source": "existing approved cohort",
+      "type": "categorical",
+      "levels": [
+        "low",
+        "middle_intermediate",
+        "bachelor_or_higher",
+        "unknown"
+      ],
+      "approved_reporting_definition_unchanged": true
+    },
+    {
+      "name": "migration_group",
+      "source": "existing approved cohort",
+      "type": "categorical",
+      "levels": [
+        "has_background",
+        "no_background",
+        "uncertain"
+      ],
+      "approved_reporting_definition_unchanged": true
+    },
+    {
+      "name": "hhmmb",
+      "source": "hhmmb",
+      "type": "categorical",
+      "new_proposed_bins": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5+",
+        "unknown"
+      ],
+      "zero_or_noninteger_or_missing": "unknown input token only; no row exclusion or raw correction"
+    },
+    {
+      "name": "maritalb",
+      "source": "maritalb",
+      "type": "categorical",
+      "valid_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "name": "mnactic",
+      "source": "mnactic",
+      "type": "categorical",
+      "valid_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "name": "hinctnta",
+      "source": "hinctnta",
+      "type": "categorical",
+      "valid_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "meaning": "relative country/wave household-income decile, not common purchasing power"
+    },
+    {
+      "name": "hincfel",
+      "source": "hincfel",
+      "type": "categorical",
+      "valid_codes": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "domicil",
+      "source": "domicil",
+      "type": "categorical",
+      "valid_codes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "sclmeet",
+      "source": "sclmeet",
+      "type": "categorical",
+      "valid_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "inprdsc",
+      "source": "inprdsc",
+      "type": "categorical",
+      "valid_codes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "meaning": "source bins, not a linear person count"
+    },
+    {
+      "name": "sclact",
+      "source": "sclact",
+      "type": "categorical",
+      "valid_codes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "excluded_as_inputs": [
+    "fltdpr",
+    "flteeff",
+    "slprl",
+    "fltlnl",
+    "fltsd",
+    "cldgng",
+    "wrhpp",
+    "enjlf",
+    "CESD8_observed_sum",
+    "happy",
+    "stflife",
+    "health",
+    "hlthhmp",
+    "cntry",
+    "essround",
+    "idno",
+    "raw_row_index",
+    "mode",
+    "psu",
+    "stratum",
+    "anweight",
+    "pspwght",
+    "dweight",
+    "pweight",
+    "eisced",
+    "edulvlb",
+    "brncntr",
+    "facntr",
+    "mocntr"
+  ],
+  "population": {
+    "age_variable": "agea",
+    "recorded_age_min_inclusive": 25,
+    "recorded_age_max_inclusive": 89,
+    "missing_age": "unassigned; not imputed",
+    "ongoing_education": "no extra exclusion",
+    "frame": "ESS private-household sampling and questionnaire-language coverage",
+    "supervised_domain": "age eligible and eight valid CES-D items",
+    "generalization": "complete-case observation domain is not automatically the entire adult population",
+    "age_sensitivity": "test-only 25-64 domain using identical frozen predictions",
+    "exact_R11_country_top_coding": "not fully verified; do not read 90 as exact age"
+  },
+  "education": {
+    "variable": "eisced",
+    "primary_dimension": true,
+    "groups": {
+      "low": [
+        1,
+        2
+      ],
+      "middle_intermediate": [
+        3,
+        4,
+        5
+      ],
+      "bachelor_or_higher": [
+        6,
+        7
+      ]
+    },
+    "unknown_numeric_codes": [
+      0,
+      55
+    ],
+    "unknown_missing": "all system/tagged/nonresponse codes",
+    "primary_contrast": "low minus bachelor_or_higher",
+    "note": "ES-ISCED numeric codes are not ISCED-2011 levels; code 5 is not BA",
+    "sensitivity": "evaluation-only regroup code 5 with 6-7",
+    "unknown_global_cohort_exclusion": false
+  },
+  "migration": {
+    "variables": [
+      "brncntr",
+      "facntr",
+      "mocntr"
+    ],
+    "priority": "secondary",
+    "has_background": "any of the three raw codes equals 2; positive evidence takes precedence over missingness",
+    "no_background": "all three codes equal 1",
+    "uncertain": "no code 2 and at least one missing/invalid code",
+    "generation": "exploratory; assign only when self-birthplace is known",
+    "unknown_global_cohort_exclusion": false
+  },
+  "outcome": {
+    "name": "CESD8_observed_sum",
+    "negative_items": [
+      "fltdpr",
+      "flteeff",
+      "slprl",
+      "fltlnl",
+      "fltsd",
+      "cldgng"
+    ],
+    "positive_items": [
+      "wrhpp",
+      "enjlf"
+    ],
+    "valid_raw_codes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "negative_transform": "x - 1",
+    "positive_transform": "4 - x",
+    "range": [
+      0,
+      24
+    ],
+    "minimum_valid_items": 8,
+    "missing_policy": "score undefined; no imputation, prorating or zero fill",
+    "outcome_standardization": false,
+    "clinical_threshold": null,
+    "clinical_diagnosis_claim": false
+  },
+  "weights": {
+    "base": "anweight",
+    "primary_target": "equal mean of included country-specific survey-weighted metrics, separately by wave",
+    "pooled_mean_loss_weight": "(1/K)*a_i/sum(a_k over eligible same-country same-wave same-role rows)",
+    "source_training_denominator": "training rows only",
+    "group_gaps": "calculate within-country conditional group metric differences; equal-average over identical paired estimable countries",
+    "unknown_group_report": "own denominator and attrition, never silently remove from global metrics",
+    "secondary_target": "population-weighted pooled anweight on identical observations and predictions",
+    "extra_multiplication_by_dweight_or_pspwght": false,
+    "weight_trimming": false,
+    "invalid_weight": "stop for inspection",
+    "variance": "requires verified survey design; no CI algorithm or replication count frozen",
+    "kish": "weight-concentration diagnostic only"
+  },
+  "mode": {
+    "R11_main_includes": [
+      1,
+      2,
+      "unknown"
+    ],
+    "R11_mode1": "face to face",
+    "R11_mode2": "interviewer-led video",
+    "unknown": "retain distinctly; never assign code 1",
+    "unexpected_codes_3_4": "stop scope/version review",
+    "R7": "no fabricated individual mode field",
+    "primary_predictor": false,
+    "sensitivity": "test domain mode=1 only, with frozen model/predictions/thresholds",
+    "exclude_country_for_video_share": false,
+    "causal_mode_claim": false
+  },
+  "precision": {
+    "flag_test_group_n_below": 100,
+    "flag_test_group_kish_below": 50,
+    "purpose": "operational low-precision warning, not power or ESS threshold",
+    "flags_exclude_people_or_countries": false,
+    "zero_denominator": "undefined/NA",
+    "country_rank_from_small_cells": false
+  },
+  "model_configuration": {
+    "common_fit_policy": {
+      "master_model_seed": 2026102604,
+      "additional_seeds_or_architectures": false,
+      "hyperparameter_search": false,
+      "training_weight_target": "preserved role-normalized country-equal w, sum=1, each source country 1/18",
+      "common_validation_metric": "independently recomputed float64 weighted mean across 0.1/0.5/0.9; native is not divided by3",
+      "point_output": "unchanged median head q0.5",
+      "quantile_crossing": "report; no reordering",
+      "prediction_clipping": false,
+      "reported_out_of_target_range": "diagnostic, not raw-data change"
+    },
+    "catboost_proposed": {
+      "class": "CatBoostRegressor",
+      "version": "1.2.10",
+      "constructor_parameters": {
+        "loss_function": "MultiQuantile:alpha=0.1,0.5,0.9",
+        "eval_metric": "MultiQuantile:alpha=0.1,0.5,0.9",
+        "task_type": "CPU",
+        "thread_count": 2,
+        "iterations": 400,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 3,
+        "grow_policy": "SymmetricTree",
+        "boosting_type": "Plain",
+        "bootstrap_type": "No",
+        "random_strength": 0,
+        "one_hot_max_size": 32,
+        "leaf_estimation_method": "Gradient",
+        "leaf_estimation_iterations": 1,
+        "random_seed": 2026102604
+      },
+      "fit_controls": {
+        "use_best_model": true,
+        "early_stopping_rounds": 30,
+        "validation": "source validation Pool only",
+        "save_snapshot": true,
+        "snapshot_interval_seconds": 30
+      },
+      "fit_starts_max": 1,
+      "quantiles_trained_jointly": true,
+      "fallback_to_three_single_quantile_models": false,
+      "api_sample_weights": "N_role * normalized original role weights, mean=1; preserved role tables unchanged"
+    },
+    "tabm_proposed": {
+      "version": "0.0.3",
+      "arch_type": "tabm",
+      "k": 16,
+      "n_blocks": 2,
+      "d_block": 128,
+      "dropout": 0.1,
+      "activation": "ReLU",
+      "start_scaling_init": "random-signs",
+      "start_scaling_init_chunks": "[1] plus 12 observed source category block widths; sum 77",
+      "output": "LinearEnsemble(128,3,k=16)",
+      "quantiles": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "optimizer": {
+        "class": "torch.optim.AdamW",
+        "lr": 0.002,
+        "weight_decay": 0.0003,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "amsgrad": false,
+        "foreach": false,
+        "fused": false
+      },
+      "training": {
+        "batch_size": 512,
+        "steps_per_full_epoch": 42,
+        "epochs_max": 30,
+        "optimizer_updates_max": 1260,
+        "drop_last": false,
+        "num_workers": 0,
+        "shuffle": "uniform per epoch with dedicated torch.Generator seed 2026102604; no weighted/group sampler",
+        "validation_every_epoch": true,
+        "patience": 5,
+        "relative_min_delta": 0.0001,
+        "criterion": "weighted mean of 3 pinball losses on ensemble-averaged source-validation predictions",
+        "gradient_clip_norm": 1.0,
+        "nonfinite_loss_or_gradient": "stop; no retry/lr change",
+        "scheduler": null,
+        "mixed_precision": false,
+        "torch_compile": false
+      },
+      "loss": "(N/b) * sum_batch w_i * mean_16_members(sum_3_quantile_pinball_losses); batch weights not renormalized",
+      "precision": "float32 model/features; float64 weight/loss reduction",
+      "fit_starts_max": 1,
+      "inference": "average members within each of the three heads; not claimed to be exact mixture quantile",
+      "checkpoint": "atomic full epoch model/optimizer/RNG/shuffle/step/best-valid state"
+    },
+    "reference": {
+      "work_units": 1,
+      "outputs": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "fit": "three empirical weighted source-fit quantiles, smallest Y with weighted CDF >=q",
+      "uses_validation_y": false,
+      "uses_target_y": false
+    },
+    "calibration": {
+      "source_fits_per_model": 1,
+      "local_fits_per_model": 2,
+      "total_solves_max": 6,
+      "matrix_size": [
+        3,
+        3
+      ],
+      "dtype": "float64",
+      "implementation": "NumPy, no sklearn optimizer",
+      "lambda": 1.0,
+      "intercept_penalty": false,
+      "source_centers_and_scales": "source calibration only",
+      "zero_source_output_variance": "approved zero-column rule",
+      "relative_equation_residual_max": 1e-10,
+      "invalid_system": "stop; no pseudoinverse or lambda/tolerance change",
+      "group_specific_models": false
+    }
+  },
+  "environment": {
+    "python": "3.13.5",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "torch": "2.14.1",
+      "catboost": "1.2.10",
+      "tabm": "0.0.3",
+      "rtdl-revisiting-models": "0.0.2",
+      "rtdl-num-embeddings": "0.0.12",
+      "scipy": "1.18.1"
+    },
+    "device": "cpu"
+  },
+  "limits": {
+    "wall_seconds": 3600,
+    "rss_bytes": 4294967296,
+    "output_bytes": 536870912,
+    "logs_bytes": 16777216,
+    "numeric_threads": 2,
+    "phase_seconds": {
+      "reference": 90,
+      "catboost": 300,
+      "tabm": 600,
+      "diagnostics": 150,
+      "audit": 60
+    }
+  },
+  "design_totals": {
+    "main_training": 38,
+    "calibrators": 114,
+    "references": 19,
+    "estimation_units": 171
+  },
+  "primary_capacity": 0.8,
+  "inference": "Descriptive point estimates only; no confidence intervals, p-values or bootstrap."
+}

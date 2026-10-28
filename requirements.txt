@@ -1,0 +1,8 @@
+numpy==2.5.4
+pandas==3.0.6
+torch==2.14.1
+catboost==1.2.10
+tabm==0.0.3
+rtdl-revisiting-models==0.0.2
+rtdl-num-embeddings==0.0.12
+scipy==1.18.1
